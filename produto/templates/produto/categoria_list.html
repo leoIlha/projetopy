@@ -1,0 +1,30 @@
+{% extends 'core/home.html' %}
+
+{% block content %}
+    <br><br><br><br><br><br>
+        <h1>Lista de Categorias</H1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Alterar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for categoria in object_list %}
+                <tr>
+                    <td>{{ categoria.id }}</td>
+                    <td>{{ categoria.nome }}</td>
+                    <td><a href="{% url 'update' categoria.id %}">Alterar</a></td>
+                 <td><a href="{% url 'delete' categoria.id %}">Excluir</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+
