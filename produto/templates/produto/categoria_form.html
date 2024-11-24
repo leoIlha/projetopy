@@ -1,11 +1,12 @@
 {% extends 'core/home.html' %}
-{% block content %}
+
+{% block save %}
     <h1>Cadastro de Categoria</h1>
 
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Salvar</button>
+        <button  type="submit">Salvar</button>
     </form>
 
 {% endblock %}
