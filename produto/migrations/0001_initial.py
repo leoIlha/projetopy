@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                 ('nome', models.CharField(max_length=100)),
                 ('quantidade', models.IntegerField()),
                 ('preco', models.FloatField()),
-                ('categoria', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='categoria.categoria')),
+                ('produto', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='produto.produto')),
             ],
         ),
     ]

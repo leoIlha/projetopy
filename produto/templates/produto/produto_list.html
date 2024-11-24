@@ -1,45 +1,46 @@
 {% extends 'core/home.html' %}
 {% block content %}
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
+{% load static %}
 
-
-    <h1>Cadastrar Categorias</h1>
-     <button class="styled-button" onclick="window.location.href='{% url 'categoria_form' %}'">
+    <h1>Cadastrar Produtos</h1>
+     <button class="styled-button" onclick="window.location.href='{% url 'saveproduto' %}'">
     Cadastrar
     </button>
 
-    <h1>Lista de Categorias</h1>
+ <h1>Lista de Produtos</h1>
 
 <div class="group">
   <input id="searchInput" placeholder="Search" type="search" class="input">
 </div>
 
 
-    <table id="categoriaTable">
+    <table id="produtoTable">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Categoria</th>
                 <th>Alterar</th>
                 <th>Excluir</th>
             </tr>
         </thead>
-        <tbody>
-            {% for categoria in object_list %}
-                <tr>
-                    <td>{{ categoria.id }}</td>
-                    <td>{{ categoria.nome }}</td>
-                    <td>
-{#                        <form method="get" action="{% url 'update' categoria.id %}">#}
-{#                            <button type="submit" class="buttoneditar">Alterar</button>#}
-{#                        </form>#}
-                        <button class="Btn" onclick="window.location.href='{% url 'update' categoria.id %}'">Alterar
-                        </button>
 
+<tbody>
+            {% for produto in object_list %}
+                <tr>
+                    <td>{{ produto.id }}</td>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.preco }}</td>
+                    <td>{{ produto.quantidade }}</td>
+                    <td>{{ produto.categoria }}</td>
+                    <td>
+                        <button class="Btn" onclick="window.location.href='{% url 'updateproduto' produto.id %}'">Alterar
+                        </button>
                     </td>
                     <td>
-                            <button class="Btn" onclick="window.location.href='{% url 'delete' categoria.id %}'">Excluir
+                            <button class="Btn" onclick="window.location.href='{% url 'deleteproduto' produto.id %}'">Excluir
                         </button>
 
                     </td>
@@ -53,7 +54,7 @@
     <script>
 document.getElementById('searchInput').addEventListener('keyup', function() {
     const filter = this.value.toLowerCase();
-    const rows = document.querySelectorAll('#categoriaTable tbody tr');
+    const rows = document.querySelectorAll('#produtoTable tbody tr');
 
     rows.forEach(row => {
         const nome = row.cells[1].textContent.toLowerCase();
