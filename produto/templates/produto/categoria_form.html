@@ -7,6 +7,10 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button  type="submit">Salvar</button>
+
+    <button class="Btn" onclick="window.location.href='{% url 'categoria_list' %}'" type="reset">Cancelar
+    </button>
+
     </form>
 
 {% endblock %}
