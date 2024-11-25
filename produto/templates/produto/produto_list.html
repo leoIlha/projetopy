@@ -1,0 +1,71 @@
+{% extends 'core/home.html' %}
+{% block content %}
+{% load static %}
+
+    <h1>Cadastrar Produtos</h1>
+     <button class="styled-button" onclick="window.location.href='{% url 'saveproduto' %}'">
+    Cadastrar
+    </button>
+
+ <h1>Lista de Produtos</h1>
+
+<div class="group">
+  <input id="searchInput" placeholder="Search" type="search" class="input">
+</div>
+
+
+    <table id="produtoTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Categoria</th>
+                <th>Alterar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+
+<tbody>
+            {% for produto in object_list %}
+                <tr>
+                    <td>{{ produto.id }}</td>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.preco }}</td>
+                    <td>{{ produto.quantidade }}</td>
+                    <td>{{ produto.categoria }}</td>
+                    <td>
+                        <button class="Btn" onclick="window.location.href='{% url 'updateproduto' produto.id %}'">Alterar
+                        </button>
+                    </td>
+                    <td>
+                            <button class="Btn" onclick="window.location.href='{% url 'deleteproduto' produto.id %}'">Excluir
+                        </button>
+
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+    <script>
+document.getElementById('searchInput').addEventListener('keyup', function() {
+    const filter = this.value.toLowerCase();
+    const rows = document.querySelectorAll('#produtoTable tbody tr');
+
+    rows.forEach(row => {
+        const nome = row.cells[1].textContent.toLowerCase();
+        if (nome.includes(filter)) {
+            row.style.display = ''; // Mostrar a linha
+        } else {
+            row.style.display = 'none'; // Esconder a linha
+        }
+    });
+});
+</script>
+
+
+{% endblock %}

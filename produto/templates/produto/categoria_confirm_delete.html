@@ -1,0 +1,19 @@
+{% extends 'core/home.html' %}
+
+{% block content %}
+
+    <form class="form" method="POST">
+    {% csrf_token %}
+    <h4> Apagar Tarefa!</h4>
+    <p>
+        Tem certeza que deseja apagar a categoria {{ object.nome }}?
+    </p>
+    <p>
+        <button class="Btn" onclick="window.location.href='{% url 'listcategoria' %}'" type="reset">Não</button>
+
+{#        <a href="{% url 'categoria_list'%}" class="btn btn-secondary btn-sm">Não</a>#}
+        <button type="submit" class="btn btn-danger">Sim</button>
+    </p>
+    </form>
+
+{% endblock %}
