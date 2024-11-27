@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'core/css/estilo.css' %}">
 <div class="body-container">
 
-<form class="form" method="post" action="home.html">
+<form class="form" method="post">
     {% csrf_token %}
     <div class="flex-column">
       <label>Email </label></div>
@@ -27,7 +27,8 @@
       <span class="span">Forgot password?</span>
     </div>
     <button class="button-submit">Sign In</button>
-    <p class="p">Don't have an account? <a href="{% url 'save' %}" class="span">Sign Up</a></p>
+
+    <p class="p">Don't have an account? <a href="{% url 'cadastro' %}" class="span">Sign Up</a></p>
 
     </p><p class="p line">Or With</p>
 
