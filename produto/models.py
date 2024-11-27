@@ -16,7 +16,7 @@ class Produto(models.Model):
     preco = models.FloatField()
     categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT)
 
-
-
+    def __str__(self):
+        return self.nome
 
 
