@@ -31,15 +31,10 @@ class UsuarioCreateView(CreateView):
         cpf = form.cleaned_data['cpf']
         telefone = form.cleaned_data['telefone']
 
-        # Verifica se já existe um usuário com esse email
-        buscauser = User.objects.filter(email=email)
+        print(email,nome,senha,data_nascimento,cpf,telefone)
 
-        if buscauser.exists():  # Verifica se a consulta retornou algum resultado
-            return HttpResponse('Este email já está cadastrado!')
-
-        # Cria o novo usuário se o email não estiver cadastrado
-        user = User.objects.create_user(username=nome, email=email, password=senha)
-        user.save()
+        user1= Usuarios.objects.create(nome=nome, email=email, password=senha, data_nascimento=data_nascimento,cpf=cpf,telefone=telefone)
+        user1.save()
 
         # Redireciona para a página de login após salvar
         return HttpResponseRedirect(reverse_lazy('login'))

@@ -7,7 +7,7 @@ from django.utils import timezone
 
 
 class Usuarios(AbstractBaseUser):
-    nome = models.CharField(max_length=100)
+    nome = models.CharField(max_length=100, unique=True)
     email = models.EmailField(max_length=100, unique=True)
     senha = models.CharField(max_length=100)
     data_nascimento = models.DateField(default=timezone.now)
@@ -16,6 +16,6 @@ class Usuarios(AbstractBaseUser):
     cpf = models.CharField(max_length=11, unique=True)
     telefone = models.CharField(max_length=11)
 
-    REQUIRED_FIELDS = [ 'nome']
+    REQUIRED_FIELDS = [ 'email']
     USERNAME_FIELD = 'nome'
 
